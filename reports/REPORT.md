@@ -1,7 +1,7 @@
 # Lab 25B — Report: ShopAgent Reliability Game Day
 
 **Họ tên:** Trần Quốc Vượng — **MSSV:** 2A202602522.
-**Commit source/evidence:** `2f8dd8c600b80e3875f409f29c2547abc8a5991c`. Phiên bản nộp đủ report: tag `day25-submission-20261013`.
+**Commit source/evidence:** `2f8dd8c600b80e3875f409f29c2547abc8a5991c`. Phiên bản nộp đủ report: tag `day25-submission-20261013-r2`.
 **Điểm tự động:** 84.0/88; đạt toàn bộ 84 điểm kiểm tra public. 4 điểm SLO hidden chờ giảng viên,
 12 điểm report/postmortem chấm tay, chưa tự cộng vào điểm đã xác minh.
 
@@ -97,16 +97,19 @@ và những degradation nằm dưới ngưỡng trip.
 
 ### 3.2. Timeout 30 giây
 
-| Băng | Timeout s | Availability | P95 s (successful turns) | P99 s |
-| --- | --- | --- | --- | --- |
-| G4 | 4 | 0.9995 | 5.419 | 8.812 |
-| G4 | 30 | 1.0 | 5.608 | 8.952 |
-| G6 | 4 | 1.0 | 6.081 | 8.774 |
-| G6 | 30 | 0.9488 | 5.502 | 6.666 |
+| Băng | Timeout s | Availability | Failed turns | give_up_reasons | P95 s (successful turns) | P99 s |
+| --- | --- | --- | --- | --- | --- | --- |
+| G4 | 4 | 0.9995 | 1 | {"no_provider_available": 1} | 5.419 | 8.812 |
+| G4 | 30 | 1.0 | 0 | {} | 5.608 | 8.952 |
+| G6 | 4 | 1.0 | 0 | {} | 6.081 | 8.774 |
+| G6 | 30 | 0.9488 | 122 | {"deadline": 122} | 5.502 | 6.666 |
 
-G4 vẫn được breaker xử lý qua slow successes, nên timeout 30 s không làm availability sụp ở băng này.
-G6 availability giảm 1,000 → 0,9488: một attempt treo ở alpha-eu có thể dùng hết deadline của user,
-không còn thời gian cho beta. P95 G6 giảm trong control **không có nghĩa nhanh hơn cho mọi người** vì nó chỉ
+Đọc availability và `give_up_reasons` trước P95: ở G6, timeout 4 s có 0 failed turns và
+`give_up_reasons={}`; timeout 30 s có **122 failed turns**, tất cả ghi `deadline`, availability giảm
+1,000 → 0,9488. Một attempt treo ở alpha-eu có thể dùng hết deadline của user, không còn thời gian cho beta.
+Đối chứng G4: timeout 4 s có 1 failed turn (`no_provider_available`), timeout 30 s không có GiveUp;
+breaker vẫn xử lý được slow successes nên timeout 30 s không làm availability sụp ở băng này.
+P95 G6 giảm trong control **không có nghĩa nhanh hơn cho mọi người** vì nó chỉ
 tính trên lượt thành công; các lượt treo đã rơi khỏi mẫu. Timeout nên dựa vào phân bố latency khỏe, deadline
 toàn lượt và số fallback còn cần, rồi kiểm tra false timeout; không lấy 30 s của user cho từng LLM call.
 
@@ -193,7 +196,8 @@ chưa vượt toàn bộ budget. Không trộn turn-level tính toán này với
 | 455 | Bắt đầu cửa sổ recovery theo scorer | 13.5 | 0.3 | 40 |
 | 480 | Call success 10s phục hồi | 8.8 | 1.0 | 137 |
 
-Các số attempts/s và success ở bảng là cửa sổ **10 giây kết thúc tại t**, đúng phạm vi hình.
+Các số attempts/s và success ở bảng là cửa sổ **10 giây kết thúc tại t**. Panel dưới của hình cũng dùng
+success rolling 10 giây; panel trên hiển thị attempts của từng giây, còn bảng lấy trung bình 10 giây.
 Recovery của scorer là cửa sổ **30 giây bắt đầu tại t**: tại [455,485) có 352/368 calls thành công
 (95,65%). Vì vậy t=455 được tính là recovery dù success trailing 10s tại chính t=455 mới là 30%.
 Hai loại cửa sổ khác nhau phải được đọc riêng.

@@ -1,7 +1,7 @@
 # Checklist Lab 25B
 
 Trần Quốc Vượng — 2A202602522. Ngày thực hiện: 13/10/2026 (UTC+07:00).
-Phiên bản nộp đủ source/evidence/report: tag `day25-submission-20261013`.
+Phiên bản nộp đủ source/evidence/report: tag `day25-submission-20261013-r2`.
 
 - [x] Đọc README, rubric và các hợp đồng event/virtual time.
 - [x] Part A: phân loại lỗi, full jitter, retry-after và token-bucket retry budget.
