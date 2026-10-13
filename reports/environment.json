@@ -1,0 +1,24 @@
+{
+  "kind": "simulation",
+  "python": "3.11.15",
+  "platform": "Windows",
+  "packages": {
+    "day25-gameday-lab": "1.1.0",
+    "PyYAML": "6.0.3",
+    "pytest": "9.1.1",
+    "matplotlib": "3.11.2",
+    "ruff": "0.17.0",
+    "mypy": "2.4.0"
+  },
+  "api_keys_required": false,
+  "docker_required": false,
+  "seeds": [
+    25,
+    26,
+    27
+  ],
+  "tests": {
+    "provided": 82,
+    "additional": 6
+  }
+}

@@ -4,7 +4,7 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
-reports/gameday/
-reports/*.json
-reports/*.png
-reports/cache/
+# Simulation outputs are submission evidence and must be versioned.
+.env
+.env.*
+!.env.example
