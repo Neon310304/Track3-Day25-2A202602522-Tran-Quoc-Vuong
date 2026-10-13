@@ -1,10 +1,10 @@
 # Phiên bản nộp Lab 25B
 
 - Họ tên: Trần Quốc Vượng — MSSV: 2A202602522.
-- Repo: https://github.com/Neon310304/Track3-Day25-2A202602522-Tr-n-Qu-c-V-ng
+- Repo: https://github.com/Neon310304/Track3-Day25-2A202602522-Tran-Quoc-Vuong
 - Commit nộp đầy đủ: `59f74bc21d56b1f3c42f70752445e9de5a8fc883`.
 - Tag: `day25-submission-20261013`.
-- Mở đúng phiên bản: https://github.com/Neon310304/Track3-Day25-2A202602522-Tr-n-Qu-c-V-ng/tree/59f74bc21d56b1f3c42f70752445e9de5a8fc883
+- Mở đúng phiên bản: https://github.com/Neon310304/Track3-Day25-2A202602522-Tran-Quoc-Vuong/tree/59f74bc21d56b1f3c42f70752445e9de5a8fc883
 - Report: `reports/REPORT.md`; kết quả tự chấm: `reports/scoreboard.json`.
 
 Phiên bản này có toàn bộ source, cấu hình, JSON, CSV, hình postmortem, report và manifest.
