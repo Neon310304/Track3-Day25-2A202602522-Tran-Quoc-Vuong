@@ -3,7 +3,8 @@
 - Họ tên: Trần Quốc Vượng — MSSV: 2A202602522.
 - Repo: https://github.com/Neon310304/Track3-Day25-2A202602522-Tran-Quoc-Vuong
 - Phiên bản nộp đầy đủ: tag `day25-submission-20261013-r2`.
-- Mở đúng phiên bản: https://github.com/Neon310304/Track3-Day25-2A202602522-Tran-Quoc-Vuong/tree/day25-submission-20261013-r2
+- Commit nộp đầy đủ: `277ac146590e5aca38d1412bbf83a421251ac1bd`.
+- Mở đúng phiên bản: https://github.com/Neon310304/Track3-Day25-2A202602522-Tran-Quoc-Vuong/tree/277ac146590e5aca38d1412bbf83a421251ac1bd
 - Report: `reports/REPORT.md`; kết quả tự chấm: `reports/scoreboard.json`.
 
 Phiên bản này có toàn bộ source, cấu hình, JSON, CSV, hình postmortem, report và manifest.
