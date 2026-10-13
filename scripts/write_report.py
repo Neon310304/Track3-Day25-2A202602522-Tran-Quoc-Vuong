@@ -24,6 +24,7 @@ def table(headers, rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-commit", required=True, help="Commit containing code and simulation evidence")
+    parser.add_argument("--submission-commit", required=True, help="Immutable submission snapshot being documented")
     args = parser.parse_args()
     naive, yours = read("gameday/naive.json"), read("gameday/resilient.json")
     workflow, slo = read("workflows.json"), read("slo.json")
@@ -100,8 +101,9 @@ def main():
     b = slo["burnrate"]["budget"]
     text = f"""# Lab 25B — Report: ShopAgent Reliability Game Day
 
-**Họ tên:** Trần Quốc Vượng — **MSSV:** 2A202602522.
-**Commit source/evidence:** `{args.source_commit}`. Phiên bản nộp đủ report: tag `day25-submission-20261013-r2`.
+**Họ tên / nhóm:** Trần Quốc Vượng — **MSV:** 2A202602522.
+**Commit:** `{args.submission_commit}` — snapshot nộp có source, artifacts và report; tag `day25-submission-20261013-r2`.
+**Commit source/evidence:** `{args.source_commit}`. Metadata commit nộp được ghi trong commit hồ sơ sau snapshot để tránh tự tham chiếu SHA.
 **Điểm tự động:** {score}/88; đạt toàn bộ 84 điểm kiểm tra public. 4 điểm SLO hidden chờ giảng viên,
 12 điểm report/postmortem chấm tay, chưa tự cộng vào điểm đã xác minh.
 
@@ -375,7 +377,7 @@ idempotent effect theo hợp đồng payment/email của starter, stale-if-error
 .\\.venv\\Scripts\\python.exe scripts/plot_timeseries.py
 .\\.venv\\Scripts\\python.exe scripts/grade.py
 .\\.venv\\Scripts\\python.exe scripts/grade.py --seeds 25,26,27 --out reports/scoreboard_multiseed.json
-.\\.venv\\Scripts\\python.exe scripts/write_report.py --source-commit {args.source_commit}
+.\\.venv\\Scripts\\python.exe scripts/write_report.py --source-commit {args.source_commit} --submission-commit {args.submission_commit}
 ```
 
 82 tests gốc + 6 regression bổ sung đạt; lint/type check các file triển khai đạt. 4 điểm hidden SLO chưa có

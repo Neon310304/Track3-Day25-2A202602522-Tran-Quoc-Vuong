@@ -1,7 +1,8 @@
 # Lab 25B — Report: ShopAgent Reliability Game Day
 
-**Họ tên:** Trần Quốc Vượng — **MSSV:** 2A202602522.
-**Commit source/evidence:** `2f8dd8c600b80e3875f409f29c2547abc8a5991c`. Phiên bản nộp đủ report: tag `day25-submission-20261013-r2`.
+**Họ tên / nhóm:** Trần Quốc Vượng — **MSV:** 2A202602522.
+**Commit:** `277ac146590e5aca38d1412bbf83a421251ac1bd` — snapshot nộp có source, artifacts và report; tag `day25-submission-20261013-r2`.
+**Commit source/evidence:** `2f8dd8c600b80e3875f409f29c2547abc8a5991c`. Metadata commit nộp được ghi trong commit hồ sơ sau snapshot để tránh tự tham chiếu SHA.
 **Điểm tự động:** 84.0/88; đạt toàn bộ 84 điểm kiểm tra public. 4 điểm SLO hidden chờ giảng viên,
 12 điểm report/postmortem chấm tay, chưa tự cộng vào điểm đã xác minh.
 
@@ -333,7 +334,7 @@ idempotent effect theo hợp đồng payment/email của starter, stale-if-error
 .\.venv\Scripts\python.exe scripts/plot_timeseries.py
 .\.venv\Scripts\python.exe scripts/grade.py
 .\.venv\Scripts\python.exe scripts/grade.py --seeds 25,26,27 --out reports/scoreboard_multiseed.json
-.\.venv\Scripts\python.exe scripts/write_report.py --source-commit 2f8dd8c600b80e3875f409f29c2547abc8a5991c
+.\.venv\Scripts\python.exe scripts/write_report.py --source-commit 2f8dd8c600b80e3875f409f29c2547abc8a5991c --submission-commit 277ac146590e5aca38d1412bbf83a421251ac1bd
 ```
 
 82 tests gốc + 6 regression bổ sung đạt; lint/type check các file triển khai đạt. 4 điểm hidden SLO chưa có

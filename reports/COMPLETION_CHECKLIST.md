@@ -22,6 +22,11 @@ Phiên bản nộp đủ source/evidence/report: tag `day25-submission-20261013-
   12 điểm report chấm tay chưa được tự cộng.
 - [x] Simulator/scenarios/services/naive clients/data giữ nguyên; chỉ tune client/cache trong world config.
 - [x] Source, JSON, CSV, hình và report được đóng gói; `.venv`, cache và `.env` không đưa vào Git.
+- [x] Dòng `Họ tên / nhóm` và `Commit` trong report trên `main` xác định snapshot nộp.
+- [x] Git archive có đủ artifacts và 57 hashes khớp; cài `.[dev]` trong virtualenv mới,
+  `pip check` đạt, grader tạo scoreboard giống hoàn toàn bản đã commit (84/88).
+- [x] Repo public đúng tên `Track3-Day25-2A202602522-Tran-Quoc-Vuong`, nhánh `main`,
+  truy cập HTTP 200 khi không đăng nhập.
 
 Lab mô phỏng độc lập, không cần API key hay Docker. Số liệu không được trình bày như đo từ API production.
 Repo được chuẩn bị để người học nộp theo kênh của lớp; chưa khai đã nộp Day25.
